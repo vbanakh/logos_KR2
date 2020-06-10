@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Editor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="mainBlok">
+            <div class="topContainer">
+                <div class="topBlok btn-toolbar">
+                    <div class="btn-group slash">
+                        <button class="btn btn-light disabled" data-edit="slash" id="slash"><i
+                                class="fas fa-code"></i></button>
+                    </div>
+                    <div class="btn-group btn-group-toggle textStyle" data-toggle="buttons">
+                        <label class="btn btn-light">
+                            <input class="bold" type="radio" name="options" id="option1"> <i class="fas fa-bold"></i>
+                        </label>
+                        <label class="btn btn-light">
+                            <input class="italic" type="radio" name="options" id="option2"><i class="fas fa-italic"></i>
+                        </label>
+                        <label class="btn btn-light">
+                            <input class="strike" type="radio" name="options" id="option3"><i
+                                class="fas fa-strikethrough"></i>
+                        </label>
+                        <label class="btn btn-light">
+                            <input class="underline" type="radio" name="options" id="option4"><i
+                                class="fas fa-underline"></i>
+                        </label>
+                    </div>
+                    <div class="btn-group textAlign">
+                        <a class="btn btn-light textLeft" data-edit="justifyleft"><i class="fas fa-align-left"></i></a>
+                        <a class="btn btn-light textCenter" data-edit="justifycenter"><i
+                                class="fas fa-align-center"></i></a>
+                        <a class="btn btn-light textRight" data-edit="justifyright"><i
+                                class="fas fa-align-right"></i></a>
+                    </div>
+                    <div class="btn-group textEdit">
+                        <div class="btn-group fontFamily">
+                            <a class="btn btn-light dropdown-toggle" data-toggle="dropdown" id="familyFont"><i
+                                    class="fas fa-font"></i><b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" id="font">
+                            </ul>
+                        </div>
+                        <div class="btn-group fontSize">
+                            <a class="btn btn-light dropdown-toggle" data-toggle="dropdown"><i
+                                    class="fas fa-text-height"></i>&nbsp;<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" id="size">
+                                <li><a data-edit="12px" class="dropdown-item" style="font-size: 12px;">12px</a>
+                            
+                                <li><a data-edit="14px" class="dropdown-item" style="font-size: 14px;">14px</a>
+                            
+                                <li><a data-edit="16px" class="dropdown-item" style="font-size: 16px;">16px</a>
+                            
+                                <li><a data-edit="18px" class="dropdown-item" style="font-size: 18px;">18px</a>
+                            
+                                <li><a data-edit="20px" class="dropdown-item" style="font-size: 20px;">20px</a>
+                            
+                                <li><a data-edit="22px" class="dropdown-item" style="font-size: 22px;">22px</a>
+                            
+                                <li><a data-edit="25px" class="dropdown-item" style="font-size: 25px;">25px</a>
+                            
+                                <li><a data-edit="30px" class="dropdown-item" style="font-size: 30px;">30px</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Button trigger modal text color-->
+                        <div class="btn-group textColor">
+                            <a class="btn btn-light" data-toggle="modal" data-target="#colorText"><i
+                                    class="fas fa-palette"></i></a>
+                        </div>
+                        <!-- Modal change text color-->
+                        <div class="modal fade" id="colorText" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header" id="colorHead">
+                                        <h5 class="modal-title" id="exampleModalLabel">Choose text color</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body backgroundDisplay">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Button trigger modal change background-->
+                        <div class="btn-group background" data-toggle="modal" data-target="#background">
+                            <a class="btn btn-light"><i class="fas fa-image"></i></a>
+                        </div>
+                        <!-- Modal change background-->
+                        <div class="modal fade" id="background" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header" id="backgroundHead">
+                                        <h5 class="modal-title" id="exampleModalLabel">Choose background color or image
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" href="#" data-target="#backgroundColor"
+                                                    id="btnColor">Colors</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#" data-target="#backgroundImage"
+                                                    id="btnImage">Images</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#" data-target="#backgroundFile"
+                                                    id="btnFile">Files</a>
+                                            </li>
+                                        </ul>
+                                        <div class="backgroundDisplay mt-3" id="backgroundColor"></div>
+                                        <div class="hidden mt-3" id="backgroundImage"></div>
+                                        <div class="hidden mt-3" id="backgroundFile">
+                                            <div class="input-group mb-3 col-12">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                                    <label class="custom-file-label" for="inputGroupFile02"
+                                                        aria-describedby="inputGroupFileAddon02">Choose file...</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div></div>
+                    </div>
+                    <!-- Button trigger modal Sign in-->
+                    <div class="btn-group lock">
+                        <a class="btn btn-light" data-toggle="modal" data-edit="lock" data-target="#lock"><i
+                                class=" fas fa-lock"></i></a>
+                    </div>
+                    <!-- Modal Sign in-->
+                    <div class="modal fade" id="lock" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="text-center modal-title" id="exampleModalLabel">Sign in</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <form name="signIn">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Login here..." name="login">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password here..." name="pass">
+                                        </div>
+                                        <div class="invalidMessageSignIn1 hidden">Value is empty</div>
+                                        <div class="invalidMessageSignIn2 hidden">Please check your login or password</div>
+                                        <div class="form-group">
+                                            <input type="button" class="btn btn-secondary col-12"  id="signIn"
+                                                value="Sing In"></input>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Button trigger modal Sign out-->
+                    <div class="btn-group unlock hidden">
+                        <a class="btn btn-light" data-toggle="modal" data-edit="unlock" data-target="#unlock"><i
+                                class=" fas fa-unlock"></i></a>
+                    </div>
+                    <!-- Modal Sign out-->
+                    <div class="modal fade" id="unlock" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <form name="signOut">
+                                        <div class="form-row">
+                                            <div class="col-6 mb-3">
+                                                <input type="button" class="btn btn-secondary col-12" data-dismiss="modal" id="cancelBtn" value="Cancel"></input>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <input type="button" class="btn btn-danger col-12" data-dismiss="modal" id="signOutBtn" value="Sign out"></input>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottomBlok">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis exercitationem nisi maxime</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis exercitationem nisi maxime</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis exercitationem nisi maxime</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis exercitationem nisi maxime</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis exercitationem nisi maxime</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis exercitationem nisi maxime</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis exercitationem nisi maxime</p>
+            </div>
+        </div>
+
+        <div class="editBlok hidden">
+            <div class="topContainer">
+                <div class="btn-toolbar topBlok2">
+                    <div class="btn-group">
+                        <a class="btn btn-light save"><i class="fas fa-save"></i></a>
+                        <!-- Button trigger modal create table-->
+                        <a class="btn btn-light" data-toggle="modal" data-target="#createTable"><i
+                                class="fas fa-table"></i></a>
+                        <!-- Button trigger modal create ol li-->
+                        <a class="btn btn-light" data-toggle="modal" data-target="#createOlli"><i
+                                class="fas fa-list-ol"></i></a>
+                        <!-- Button trigger modal create ul li-->
+                        <a class="btn btn-light" data-toggle="modal" data-target="#createUlli"><i
+                                class="fas fa-list"></i></a>
+                    </div>
+                    <!-- Modal create table-->
+                    <div class="modal fade" id="createTable" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog  modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Create table</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="needs-validation" name="createTable" novalidate>
+                                        <div class="form-row">
+                                            <div class="col-6 mb-3">
+                                                <label for="validationTooltip01">Count TR:</label>
+                                                <input type="text" class="form-control" id="validationTooltip01"
+                                                    name="countTR" required>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <label for="validationTooltip02">Count TD:</label>
+                                                <input type="text" class="form-control" id="validationTooltip02"
+                                                    name="countTD" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-6 mb-3">
+                                                <label for="validationTooltip02">Width of TD:</label>
+                                                <input type="text" class="form-control" id="validationTooltip02"
+                                                    name="widthOfTD" required>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <label for="validationTooltip02">Height of TD:</label>
+                                                <input type="text" class="form-control" id="validationTooltip02"
+                                                    name="heightOfTD" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-6 mb-3">
+                                                <label for="validationTooltip03">Width of border:</label>
+                                                <input type="text" class="form-control" id="validationTooltip03"
+                                                    name="widthOfBorder" required>
+                                            </div>
+                                            <div class="col-3 mb-3">
+                                                <label for="validationTooltip04">Style of border:</label>
+                                                <select class="custom-select" id="validationTooltip04" required
+                                                    name="styleBorder">
+                                                    <option selected disabled value="">choose style</option>
+                                                    <option value="solid">solid</option>
+                                                    <option value="double">double</option>
+                                                    <option value="dotted">dotted</option>
+                                                    <option value="dashed">dashed</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-3 mb-3">
+                                                <label for="validationTooltip04">Color of border:</label>
+                                                <select class="custom-select" id="validationTooltip04"
+                                                    name="colorBorder" required>
+                                                    <option selected disabled value="">choose color</option>
+                                                    <option value="black">black</option>
+                                                    <option value="red">red</option>
+                                                    <option value="green">green</option>
+                                                    <option value="blue">blue</option>
+                                                    <option value="yellow">yellow</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="invalidMessageTb hidden">invalid value</div>
+                                        <div class="form-row">
+                                            <div class="col-6 mb-3">
+                                                <button class="btn btn-danger col-12" type="button" name="resetBtn"
+                                                    id="resetBtn">Reset</button>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <button class="btn btn-success col-12" type="button"
+                                                    id="createBtn">Create
+                                                    table</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal create ol list-->
+                    <div class="modal fade" id="createOlli" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Create Ol</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="needs-validation" name="createOlli" novalidate>
+                                        <div class="form-row">
+                                            <div class="col-12 mb-3">
+                                                <label for="validationTooltip01">Count li item:</label>
+                                                <input type="text" class="form-control col-12" id="validationTooltip01"
+                                                    name="countLi" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-12 mb-3">
+                                                <label for="validationTooltip04">Type mark of list:</label>
+                                                <select class="col-12 custom-select" id="validationTooltip04" required
+                                                    name="typeMark">
+                                                    <option selected disabled value="">choose mark</option>
+                                                    <option value="I">I</option>
+                                                    <option value="1">1</option>
+                                                    <option value="a">a</option>
+                                                    <option value="A">A</option>
+                                                    <option value="i">i</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="invalidMessageOl hidden">invalid value</div>
+                                        <div class="form-row">
+                                            <div class="form-group col-6 mb-3">
+                                                <button class="btn btn-danger col-12" type="reset"
+                                                    id="resetOl">Reset</button>
+                                            </div>
+                                            <div class="form-group col-6 mb-3">
+                                                <button class="btn btn-success col-12" type="button"
+                                                    id="createOlliBtn">Create list</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal create ul list-->
+                    <div class="modal fade" id="createUlli" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Create Ul</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form name="createUlli" class="needs-validation" novalidate>
+                                        <div class="form-row">
+                                            <div class="col-12 mb-3">
+                                                <label for="validationTooltip01">Count li item:</label>
+                                                <input type="text" class="form-control col-12" id="validationTooltip01"
+                                                    name="countLi" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-12 mb-3">
+                                                <label for="validationTooltip04">Type mark of list:</label>
+                                                <select class="col-12 custom-select" required name="typeMark">
+                                                    <option selected disabled value="">choose mark</option>
+                                                    <option value="circle">circle</option>
+                                                    <option value="disk">disk</option>
+                                                    <option value="square">square</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="invalidMessage hidden">invalid value</div>
+                                        <div class="form-row">
+                                            <div class="form-group col-6 mb-3">
+                                                <button class="btn btn-danger col-12" type="reset"
+                                                    id="resetUl">Reset</button>
+                                            </div>
+                                            <div class="form-group col-6 mb-3">
+                                                <button class="btn btn-success col-12" type="button"
+                                                    id="createUlliBtn">Create list</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="editBottom">
+                <form>
+                    <textarea class="area form-control" cols="150" rows="25"></textarea>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+.mainBlok{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.editBlok{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.topContainer{
+    height: 100px;
+    width: 100%;
+    background-color: rgb(104, 106, 105);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.topBlok{
+    height: 40px;
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.topBlok2{
+    height: 40px;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.bottomBlok, .editBottom{
+    width: 100%;
+    min-height: 700px;
+    padding: 50px;
+    line-height: 16px;
+}
+textarea{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    resize: none;
+    outline: none;
+	-moz-appearance: none;
+    border: 1px solid #999;
+	overflow: auto;
+}
+.boldText{
+    font-weight: bold;
+}
+.italicText{
+    font-style: italic;
+}
+.underlineText{
+    text-decoration: underline;
+}
+.strikeText{
+    text-decoration: line-through;
+}
+.alignLeft{
+    text-align: left;
+}
+.alignRight{
+    text-align: right;
+}
+.alignCenter{
+    text-align: center;
+}
+.colors, .colorsBackground{
+    height:55px;
+    width: 55px;
+    border-radius: 5px;
+    margin: 5px;
+}
+.images{
+    height:140px;
+    width: 140px;
+    border-radius: 5px;
+    margin: 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.hidden{
+    display: none;
+}
+.backgroundDisplay{
+    display: flex;
+    flex-flow: row wrap;
+}
+.invalidMessage, .invalidMessageOl, .invalidMessageTb, .invalidMessageSignIn1, .invalidMessageSignIn2{
+color: red;
+text-align: left;
+font-size: 12px;
+margin-bottom: 5px;
+}
